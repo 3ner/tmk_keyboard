@@ -52,10 +52,10 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            TRNS,TRNS,TRNS,  UP,TRNS,VOLU, \
            TRNS,TRNS,LEFT,DOWN,RGHT,VOLD, \
            TRNS,TRNS,TRNS,TRNS,TRNS,RCTL, \
-/*links*/  TRNS,TRNS,FN27,FN28,TRNS,TRNS, \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           TRNS,TRNS,FN31,TRNS,TRNS,TRNS
+/*links*/  TRNS,TRNS,  F2,  F3,  F4,  F5, \
+           TRNS,  F1,  F7,  F8,  F9, F10, \
+           FN28,  F6,TRNS,TRNS,TRNS,TRNS, \
+           FN27,TRNS,FN31,TRNS,TRNS,TRNS
     ),
     //Mousekeys
     KEYMAP(TRNS,TRNS,MS_BTN3,TRNS,TRNS,TRNS, \
