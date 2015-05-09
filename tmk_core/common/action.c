@@ -81,8 +81,7 @@ void process_action(keyrecord_t *record)
                 if (event.pressed) {
                     /* if no mousekeys are pressed but other regular keys,
                      * turn off the MOUSE_LAYER*/
-                    if( action.key.kind == ACT_LMODS 
-                            && action.key.mods == 0 
+                    if( (action.key.code & 0b11111100)!=KC_LCTRL
                             && tp_buttons==0) {
                         mouse_layer_helper = ML_UNSET;
                         layer_off(MOUSE_LAYER);
