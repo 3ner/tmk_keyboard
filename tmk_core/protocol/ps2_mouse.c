@@ -77,7 +77,9 @@ void ps2_mouse_task(void)
     enum { SCROLL_NONE, SCROLL_BTN, SCROLL_SENT };
     static uint8_t scroll_state = SCROLL_NONE;
     static uint8_t buttons_prev = 0;
+#ifdef AUTO_MOUSE_LAYER
     static uint16_t mouse_layer_timer = 1;
+#endif
 
     /* receives packet from mouse */
     uint8_t rcv;
@@ -97,6 +99,7 @@ void ps2_mouse_task(void)
         print_hex8((uint8_t)mouse_report.x); print(" ");
         print_hex8((uint8_t)mouse_report.y); print("]\n");
 
+#ifdef AUTO_MOUSE_LAYER
     /*if trackpad is moved or buttons are pressed, for auto-layer-switching*/
     if (mouse_report.x || mouse_report.y ||
             (mouse_report.buttons & PS2_MOUSE_BTN_MASK)) {
@@ -138,6 +141,7 @@ void ps2_mouse_task(void)
     }
     /* deactivate mouselayer on keypress other than mousebuttons or mods is in
      * action.c */
+#endif
  
     /* if mouse moves or buttons state changes */
     if (mouse_report.x || mouse_report.y ||
