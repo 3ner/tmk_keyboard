@@ -584,6 +584,7 @@ int main(void)
     host_set_driver(&lufa_driver);
 #ifdef SLEEP_LED_ENABLE
     sleep_led_init();
+    sleep_led_enable();
 #endif
 
     print("Keyboard start.\n");
