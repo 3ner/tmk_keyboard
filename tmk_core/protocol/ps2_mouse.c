@@ -93,11 +93,6 @@ void ps2_mouse_task(void)
         if (debug_mouse) print("ps2_mouse: fail to get mouse packet\n");
         return;
     }
-        xprintf("%ud ", timer_read());
-        print("ps2_mouse raw: [");
-        phex(mouse_report.buttons); print("|");
-        print_hex8((uint8_t)mouse_report.x); print(" ");
-        print_hex8((uint8_t)mouse_report.y); print("]\n");
 
 #ifdef AUTO_MOUSE_LAYER
     /*if trackpad is moved or buttons are pressed, for auto-layer-switching*/
@@ -148,6 +143,7 @@ void ps2_mouse_task(void)
             ((mouse_report.buttons ^ buttons_prev) & PS2_MOUSE_BTN_MASK)) {
 
 #ifdef PS2_MOUSE_DEBUG
+        xprintf("%ud ", timer_read());
         print("ps2_mouse raw: [");
         phex(mouse_report.buttons); print("|");
         print_hex8((uint8_t)mouse_report.x); print(" ");
