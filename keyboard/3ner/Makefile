@@ -120,6 +120,8 @@ NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
 PS2_MOUSE_ENABLE = yes
 PS2_USE_USART = yes
 
+NUMLOCK_ON_START_ENABLE = yes
+#AUTO_MOUSE_LAYER = yes	#didn't work here, put into config.h
 
 # Optimize size but this may cause error "relocation truncated to fit"
 #EXTRALDFLAGS = -Wl,--relax

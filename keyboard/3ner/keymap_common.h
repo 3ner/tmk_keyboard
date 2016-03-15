@@ -38,14 +38,11 @@ extern const uint16_t fn_actions[];
 /* keymap definition macro */
 
 #define KEYMAP( \
-    K00, K01, K02, K03, K04, K05, \
-    K10, K11, K12, K13, K14, K15, \
-    K20, K21, K22, K23, K24, K25, \
-    K30, K31, K32, K33, K34, K35, \
-    K45, K44, K43, K42, K41, K40, \
-    K55, K54, K53, K52, K51, K50, \
-    K65, K64, K63, K62, K61, K60, \
-    K75, K74, K73, K72, K71, K70 \
+    K45, K44,                                                   K04, K05, \
+    K55, K54, K43, K42, K41, K40,           K00, K01, K02, K03, K14, K15, \
+    K65, K64, K53, K52, K51, K50,           K10, K11, K12, K13, K24, K25, \
+    K75, K74, K63, K62, K61, K60,           K20, K21, K22, K23, K34, K35, \
+                   K72, K71, K70, K73, K33, K30, K31, K32\
 ) { \
     { KC_##K00, KC_##K01, KC_##K02, KC_##K03, KC_##K04, KC_##K05 },\
     { KC_##K10, KC_##K11, KC_##K12, KC_##K13, KC_##K14, KC_##K15 },\

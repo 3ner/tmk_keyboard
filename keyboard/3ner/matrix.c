@@ -141,7 +141,7 @@ static void  init_cols(void)
     // Input with pull-up(DDR:0, PORT:1)
     DDRF  &= ~(1<<7 | 1<<6 | 1<<5 | 1<<4 | 1<<1 | 1<<0);
     PORTF |=  (1<<7 | 1<<6 | 1<<5 | 1<<4 | 1<<1 | 1<<0);
-    sleep_led_enable();
+    /*sleep_led_enable();*/
 }
 
 static matrix_row_t read_cols(void)
