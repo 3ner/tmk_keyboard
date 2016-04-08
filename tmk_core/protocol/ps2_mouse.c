@@ -28,10 +28,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "action_code.h"
 #include "action_layer.h"
 
-
 static report_mouse_t mouse_report = {};
+
+#ifdef AUTO_MOUSE_LAYER
 mlh_t  mouse_layer_helper = ML_UNSET;
 uint8_t tp_buttons;
+#endif
 
 
 static void print_usb_data(void);

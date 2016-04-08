@@ -63,8 +63,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uint8_t ps2_mouse_init(void);
 void ps2_mouse_task(void);
 
-#define MOUSE_LAYER 5
+#ifdef AUTO_MOUSE_LAYER
 extern uint8_t tp_buttons;
 typedef enum {ML_UNSET, ML_STARTUP, ML_SET} mlh_t;
 extern mlh_t  mouse_layer_helper;
+#endif
+
 #endif
