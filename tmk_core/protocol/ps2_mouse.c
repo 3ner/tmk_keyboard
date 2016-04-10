@@ -25,7 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "timer.h"
 #include "print.h"
 #include "debug.h"
-#include "action_code.h"
 #include "action_layer.h"
 
 static report_mouse_t mouse_report = {};
