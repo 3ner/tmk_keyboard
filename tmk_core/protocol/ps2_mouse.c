@@ -111,7 +111,8 @@ void ps2_mouse_task(void)
             case AML_STARTUP:
                 /* if xxxms passed (with tp movement), turn on mouselayer */
                 if(TIMER_DIFF_16(timer_read(), mouse_layer_timer) >AML_STARTUP_TIME){
-                    layer_on(MOUSE_LAYER);
+                    if(!(layer_state & (1UL<<MOUSE_LAYER)))
+                        layer_on(MOUSE_LAYER);
                     mouse_layer_helper = AML_SET;
                     mouse_layer_timer = timer_read();
                 }
@@ -135,7 +136,8 @@ void ps2_mouse_task(void)
         if (mouse_layer_helper == AML_SET &&
                 (TIMER_DIFF_16(timer_read(), mouse_layer_timer) > AML_DURATION)){
             mouse_layer_helper = AML_UNSET;
-            layer_off(MOUSE_LAYER);
+            if(layer_state & (1UL<<MOUSE_LAYER))
+                layer_off(MOUSE_LAYER);
         }
     }
     /* deactivate mouselayer on keypress other than mousebuttons or mods is in

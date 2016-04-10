@@ -84,8 +84,9 @@ void process_action(keyrecord_t *record)
                      * turn off the MOUSE_LAYER*/
                     if( (action.key.code & 0b11111100)!=KC_LCTRL
                             && tp_buttons==0) {
-                        mouse_layer_helper = ML_UNSET;
-                        layer_off(MOUSE_LAYER);
+                        mouse_layer_helper = AML_UNSET;
+                        if(layer_state & (1UL<<MOUSE_LAYER))
+                            layer_off(MOUSE_LAYER);
                     }
 #endif
                     if (mods) {

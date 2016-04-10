@@ -78,14 +78,12 @@ void layer_move(uint8_t layer)
 
 void layer_on(uint8_t layer)
 {
-    if(!(layer_state & (1UL<<layer)))
-        layer_state_set(layer_state | (1UL<<layer));
+    layer_state_set(layer_state | (1UL<<layer));
 }
 
 void layer_off(uint8_t layer)
 {
-    if(layer_state & (1UL<<layer))
-        layer_state_set(layer_state & ~(1UL<<layer));
+    layer_state_set(layer_state & ~(1UL<<layer));
 }
 
 void layer_invert(uint8_t layer)
