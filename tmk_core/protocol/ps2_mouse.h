@@ -65,7 +65,15 @@ void ps2_mouse_task(void);
 
 #ifdef AUTO_MOUSE_LAYER
 extern uint8_t tp_buttons;
-typedef enum {ML_UNSET, ML_STARTUP, ML_SET} mlh_t;
+typedef enum {AML_UNSET, AML_STARTUP, AML_SET} mlh_t;
+/* you can set delays in your config.h or use these defaults */
+#ifndef AML_STARTUP_TIME
+    #define AML_STARTUP_TIME 100
+#endif
+#ifndef AML_DURATION
+    #define AML_DURATION 800
+#endif
+
 extern mlh_t  mouse_layer_helper;
 #endif
 

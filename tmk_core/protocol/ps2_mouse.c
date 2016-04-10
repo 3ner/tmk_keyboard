@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static report_mouse_t mouse_report = {};
 
 #ifdef AUTO_MOUSE_LAYER
-mlh_t  mouse_layer_helper = ML_UNSET;
+mlh_t  mouse_layer_helper = AML_UNSET;
 uint8_t tp_buttons;
 #endif
 
@@ -102,39 +102,41 @@ void ps2_mouse_task(void)
             (mouse_report.buttons & PS2_MOUSE_BTN_MASK)) {
         switch (mouse_layer_helper){
             /* if mouselayer not set and trackpoint movement */
-            case ML_UNSET:
+            case AML_UNSET:
                 mouse_layer_timer = timer_read();
-                mouse_layer_helper = ML_STARTUP;
+                mouse_layer_helper = AML_STARTUP;
                 break;
 
             /* during startup phase */
-            case ML_STARTUP:
+            case AML_STARTUP:
                 /* if xxxms passed (with tp movement), turn on mouselayer */
-                if(TIMER_DIFF_16(timer_read(), mouse_layer_timer) >100){
+                if(TIMER_DIFF_16(timer_read(), mouse_layer_timer) >AML_STARTUP_TIME){
                     layer_on(MOUSE_LAYER);
-                    mouse_layer_helper = ML_SET;
+                    mouse_layer_helper = AML_SET;
                     mouse_layer_timer = timer_read();
                 }
                 break;
 
             /* if mouselayer already set, just update timer */
-            case ML_SET:
+            case AML_SET:
                 mouse_layer_timer = timer_read();
                 break;
         }
     }
 
+    else{
     /* reset mouse layer when unused
      * when startup time exceeds */
-    if (mouse_layer_helper == ML_STARTUP &&
-            (TIMER_DIFF_16(timer_read(), mouse_layer_timer) > 150)){
-        mouse_layer_helper = ML_UNSET;
-    }
+        if (mouse_layer_helper == AML_STARTUP &&
+                (TIMER_DIFF_16(timer_read(), mouse_layer_timer) > AML_STARTUP_TIME)){
+            mouse_layer_helper = AML_UNSET;
+        }
     /* when mouselayer is on, but no mouseactions done for some time */
-    if (mouse_layer_helper == ML_SET &&
-            (TIMER_DIFF_16(timer_read(), mouse_layer_timer) > 800)){
-        mouse_layer_helper = ML_UNSET;
-        layer_off(MOUSE_LAYER);
+        if (mouse_layer_helper == AML_SET &&
+                (TIMER_DIFF_16(timer_read(), mouse_layer_timer) > AML_DURATION)){
+            mouse_layer_helper = AML_UNSET;
+            layer_off(MOUSE_LAYER);
+        }
     }
     /* deactivate mouselayer on keypress other than mousebuttons or mods is in
      * action.c */
