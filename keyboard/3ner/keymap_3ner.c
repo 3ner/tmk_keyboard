@@ -6,7 +6,7 @@
 #define BRACKETS 2
 #define CLOVER 3
 #define SPECIAL 4
-// MOUSELAYER defined in ps2_mouse.h
+// MOUSELAYER defined in config.h
 
 /*all transparent
     KEYMAP(TRNS,TRNS,                                          TRNS,TRNS, \
